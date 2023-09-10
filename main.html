@@ -1,8 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <body>
-    <script type="text/javascript" src="./script.js">
-</script>
-  </body>
+<head>
+  <style>
+    /* Add some basic styling for better appearance */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="text"], input[type="number"], button {
+      margin: 10px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br>
 
+    <label for="year">Graduation Year:</label>
+    <input type="number" id="year" name="year"><br>
+
+    <button type="button" id="button">Submit</button>
+  </form>
+
+  <h3 id="url">https://localhost:8080/</h3>
+
+  <script>
+    // JavaScript to update the URL when the button is clicked
+    document.getElementById("button").addEventListener("click", function() {
+      // Get values from the input fields
+      const name = document.getElementById("name").value;
+      const year = document.getElementById("year").value;
+
+      // Generate the query string
+      const queryString = `?name=${encodeURIComponent(name)}&year=${encodeURIComponent(year)}`;
+
+      // Update the URL in the h3 element
+      const urlElement = document.getElementById("url");
+      urlElement.textContent = `https://localhost:8080/${queryString}`;
+    });
+  </script>
+</body>
 </html>
